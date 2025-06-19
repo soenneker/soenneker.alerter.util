@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Soenneker.Alerter.Util.Abstract;
+using Soenneker.Email.Support.Registrars;
 using Soenneker.MsTeams.Util.Registrars;
 
 namespace Soenneker.Alerter.Util.Registrars;
@@ -15,7 +16,7 @@ public static class AlerterRegistrar
     /// </summary>
     public static IServiceCollection AddAlerterAsSingleton(this IServiceCollection services)
     {
-        services.AddMsTeamsUtilAsSingleton().TryAddSingleton<IAlerter, Alerter>();
+        services.AddMsTeamsUtilAsSingleton().AddEmailSupportUtilAsSingleton().TryAddSingleton<IAlerter, Alerter>();
 
         return services;
     }
@@ -25,7 +26,7 @@ public static class AlerterRegistrar
     /// </summary>
     public static IServiceCollection AddAlerterAsScoped(this IServiceCollection services)
     {
-        services.AddMsTeamsUtilAsScoped().TryAddScoped<IAlerter, Alerter>();
+        services.AddMsTeamsUtilAsScoped().AddEmailSupportUtilAsScoped().TryAddScoped<IAlerter, Alerter>();
 
         return services;
     }
