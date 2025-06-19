@@ -5,37 +5,41 @@ using Microsoft.Extensions.Logging;
 namespace Soenneker.Alerter.Util.Abstract;
 
 /// <summary>
-/// Sends structured alerts with logging, Microsoft Teams integration, and optional email support.
+/// Provides functionality to send alerts to Microsoft Teams channels and optionally via email.
 /// </summary>
 public interface IAlerter
 {
     /// <summary>
-    /// Sends an error alert with <see cref="LogLevel.Error"/> logging, Teams notification, and optional email.
+    /// Sends an error-level alert with a subject and message to a Teams channel and optionally via email.
     /// </summary>
-    /// <param name="message">The message to send and log.</param>
-    /// <param name="channel">Optional override for the Teams channel. Defaults to "Errors".</param>
+    /// <param name="subject">The subject or title of the alert.</param>
+    /// <param name="message">The detailed message content of the alert.</param>
+    /// <param name="channel">The Teams channel name or identifier. Defaults to "Errors".</param>
     /// <param name="includeEmail">Whether to also send the alert via email.</param>
     /// <param name="cancellationToken">Optional cancellation token.</param>
-    ValueTask Error(string message, string? channel = null, bool includeEmail = false, CancellationToken cancellationToken = default);
+    /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
+    ValueTask Error(string subject, string message, string channel = "Errors", bool includeEmail = false, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Sends an informational alert with <see cref="LogLevel.Information"/> logging, Teams notification, and optional email.
+    /// Sends an informational notification with a subject and message to a Teams channel and optionally via email.
     /// </summary>
-    /// <param name="message">The message to send and log.</param>
-    /// <param name="channel">Optional override for the Teams channel. Defaults to "Notifications".</param>
-    /// <param name="includeEmail">Whether to also send the alert via email.</param>
+    /// <param name="subject">The subject or title of the notification.</param>
+    /// <param name="message">The detailed message content of the notification.</param>
+    /// <param name="channel">The Teams channel name or identifier. Defaults to "Notifications".</param>
+    /// <param name="includeEmail">Whether to also send the notification via email.</param>
     /// <param name="cancellationToken">Optional cancellation token.</param>
-    ValueTask Notify(string message, string? channel = null, bool includeEmail = false, CancellationToken cancellationToken = default);
+    /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
+    ValueTask Notify(string subject, string message, string channel = "Notifications", bool includeEmail = false, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Sends a custom alert with the specified <see cref="LogLevel"/>, Teams channel, subject, and optional email.
+    /// Sends an alert with a specified log level, subject, and message to a Teams channel and optionally via email.
     /// </summary>
-    /// <param name="level">The severity level for logging.</param>
-    /// <param name="defaultChannel">The fallback Teams channel to use if <paramref name="channelOverride"/> is null.</param>
-    /// <param name="emailSubject">The subject to use for email alerts.</param>
-    /// <param name="message">The alert message to log and send.</param>
-    /// <param name="channelOverride">An optional override for the Teams channel.</param>
+    /// <param name="subject">The subject or title of the alert.</param>
+    /// <param name="message">The detailed message content of the alert.</param>
+    /// <param name="level">The severity level of the log. Defaults to <see cref="LogLevel.Error"/>.</param>
+    /// <param name="channel">The Teams channel name or identifier. Defaults to "Errors".</param>
     /// <param name="includeEmail">Whether to also send the alert via email.</param>
     /// <param name="cancellationToken">Optional cancellation token.</param>
-    ValueTask Send(LogLevel level, string defaultChannel, string emailSubject, string message, string? channelOverride = null, bool includeEmail = false, CancellationToken cancellationToken = default);
+    /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
+    ValueTask Send(string subject, string message, LogLevel level = LogLevel.Error, string channel = "Errors", bool includeEmail = false, CancellationToken cancellationToken = default);
 }

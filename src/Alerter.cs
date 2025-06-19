@@ -22,24 +22,24 @@ public sealed class Alerter : IAlerter
         _emailSupportUtil = emailSupportUtil;
     }
 
-    public ValueTask Error(string message, string? channel = null, bool includeEmail = false, CancellationToken cancellationToken = default) =>
-        Send(LogLevel.Error, "Errors", "Alerter: Error", message, channel, includeEmail, cancellationToken);
+    public ValueTask Error(string subject, string message, string channel = "Errors", bool includeEmail = false,
+        CancellationToken cancellationToken = default) =>
+        Send(subject, message, LogLevel.Error, channel, includeEmail, cancellationToken);
 
-    public ValueTask Notify(string message, string? channel = null, bool includeEmail = false, CancellationToken cancellationToken = default) =>
-        Send(LogLevel.Information, "Notifications", "Alerter: Notification", message, channel, includeEmail, cancellationToken);
+    public ValueTask Notify(string subject, string message, string channel = "Notifications", bool includeEmail = false,
+        CancellationToken cancellationToken = default) =>
+        Send(subject, message, LogLevel.Information, channel, includeEmail, cancellationToken);
 
-    public async ValueTask Send(LogLevel level, string defaultChannel, string emailSubject, string message, string? channelOverride, bool includeEmail,
-        CancellationToken cancellationToken)
+    public async ValueTask Send(string subject, string message, LogLevel level = LogLevel.Error, string channel = "Errors", bool includeEmail = false,
+        CancellationToken cancellationToken = default)
     {
         _logger.Log(level, "{Level} alert: {Message}", level, message);
 
-        string channel = channelOverride ?? defaultChannel;
-
-        await _msTeamsUtil.SendMessage(message, channel, cancellationToken: cancellationToken).NoSync();
+        await _msTeamsUtil.SendMessage(subject, channel, message, cancellationToken: cancellationToken).NoSync();
 
         if (includeEmail)
         {
-            await _emailSupportUtil.Send(emailSubject, message, cancellationToken: cancellationToken).NoSync();
+            await _emailSupportUtil.Send(subject, message, cancellationToken: cancellationToken).NoSync();
         }
     }
 }
