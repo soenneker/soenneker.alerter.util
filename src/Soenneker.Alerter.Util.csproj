@@ -41,7 +41,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Email.Support" Version="4.0.139" />
+        <PackageReference Include="Soenneker.Email.Support" Version="4.0.140" />
         <PackageReference Include="Soenneker.MsTeams.Util" Version="4.0.666" />
     </ItemGroup>
 </Project>
