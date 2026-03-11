@@ -27,13 +27,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Soenneker.Alerter.Util.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
         <Content Include="testconfig.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Soenneker.Alerter.Util\Soenneker.Alerter.Util.csproj" />
     </ItemGroup>
 
 </Project>

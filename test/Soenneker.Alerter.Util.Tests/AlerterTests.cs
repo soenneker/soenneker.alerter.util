@@ -6,7 +6,6 @@ namespace Soenneker.Alerter.Util.Tests;
 [Collection("Collection")]
 public class AlerterTests : FixturedUnitTest
 {
-
     public AlerterTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
     {
     }
@@ -14,6 +13,5 @@ public class AlerterTests : FixturedUnitTest
     [Fact]
     public void Default()
     {
-
     }
 }
