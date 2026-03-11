@@ -41,4 +41,4 @@ jobs:
         run: dotnet test test/Soenneker.Alerter.Util.Tests/Soenneker.Alerter.Util.Tests.csproj --configuration Release --no-build --verbosity minimal
 
       - name: Pack
-        run: dotnet pack src/Soenneker.Alerter.Util.csproj --configuration Release --no-build --output . --verbosity minimal
+        run: dotnet pack src/Soenneker.Alerter.Util/Soenneker.Alerter.Util.csproj --configuration Release --no-build --output . --verbosity minimal
