@@ -35,13 +35,13 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild></PropertyGroup>
     
     <ItemGroup>
-        <None Include="..\README.md" Pack="true" PackagePath="\" />
-        <None Include="..\LICENSE" Pack="true" PackagePath="\" />
-        <None Include="..\icon.png" Pack="true" PackagePath="\" />
+        <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+        <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Soenneker.Email.Support" Version="4.0.184" />
-        <PackageReference Include="Soenneker.MsTeams.Util" Version="4.0.777" />
+        <PackageReference Include="Soenneker.MsTeams.Util" Version="4.0.780" />
     </ItemGroup>
 </Project>
