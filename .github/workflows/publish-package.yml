@@ -61,7 +61,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p artifacts
-          dotnet pack src/Soenneker.Alerter.Util.csproj \
+          dotnet pack src/Soenneker.Alerter.Util/Soenneker.Alerter.Util.csproj \
             --no-build \
             --configuration Release \
             --output ./artifacts \
