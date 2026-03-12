@@ -1,4 +1,4 @@
-﻿name: build-and-test
+name: build-and-test
 
 permissions:
   contents: read
@@ -38,7 +38,7 @@ jobs:
         run: dotnet build test/Soenneker.Alerter.Util.Tests/Soenneker.Alerter.Util.Tests.csproj --configuration Release --no-restore --verbosity minimal
 
       - name: Test
-        run: dotnet test test/Soenneker.Alerter.Util.Tests/Soenneker.Alerter.Util.Tests.csproj --configuration Release --no-build --verbosity minimal
+        run: dotnet test test/Soenneker.Alerter.Util.Tests/Soenneker.Alerter.Util.Tests.csproj --configuration Release --no-build --no-restore --verbosity minimal
 
       - name: Pack
-        run: dotnet pack src/Soenneker.Alerter.Util/Soenneker.Alerter.Util.csproj --configuration Release --no-build --output . --verbosity minimal
+        run: dotnet pack src/Soenneker.Alerter.Util/Soenneker.Alerter.Util.csproj --configuration Release --no-build --no-restore --output . --verbosity minimal

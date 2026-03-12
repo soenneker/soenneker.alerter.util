@@ -63,6 +63,7 @@ jobs:
           mkdir -p artifacts
           dotnet pack src/Soenneker.Alerter.Util/Soenneker.Alerter.Util.csproj \
             --no-build \
+            --no-restore \
             --configuration Release \
             --output ./artifacts \
             -p:PackageReleaseNotes="${{ env.PACKAGE_RELEASE_NOTES }}"
