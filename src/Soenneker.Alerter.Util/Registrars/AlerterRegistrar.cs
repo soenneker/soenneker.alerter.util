@@ -14,6 +14,8 @@ public static class AlerterRegistrar
     /// <summary>
     /// Adds <see cref="IAlerter"/> as a singleton service. <para/>
     /// </summary>
+    /// <param name="services">Service collection that receives the registration.</param>
+    /// <returns>The same service collection, so additional registrations can be chained.</returns>
     public static IServiceCollection AddAlerterAsSingleton(this IServiceCollection services)
     {
         services.AddMsTeamsUtilAsSingleton().AddEmailSupportUtilAsSingleton().TryAddSingleton<IAlerter, Alerter>();
@@ -24,6 +26,8 @@ public static class AlerterRegistrar
     /// <summary>
     /// Adds <see cref="IAlerter"/> as a scoped service. <para/>
     /// </summary>
+    /// <param name="services">Service collection that receives the registration.</param>
+    /// <returns>The same service collection, so additional registrations can be chained.</returns>
     public static IServiceCollection AddAlerterAsScoped(this IServiceCollection services)
     {
         services.AddMsTeamsUtilAsScoped().AddEmailSupportUtilAsScoped().TryAddScoped<IAlerter, Alerter>();
