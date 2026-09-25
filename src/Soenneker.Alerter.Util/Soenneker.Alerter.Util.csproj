@@ -46,7 +46,7 @@
 
     <ItemGroup>
         <PackageReference Include="Soenneker.Email.Support" Version="4.0.362" />
-        <PackageReference Include="Soenneker.MsTeams.Util" Version="4.0.1235" />
+        <PackageReference Include="Soenneker.MsTeams.Util" Version="4.0.1236" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
